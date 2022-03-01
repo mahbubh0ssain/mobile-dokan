@@ -39,4 +39,75 @@ const getId = (id) => {
     .then((data) => displayDetails(data.data));
 };
 
-
+// display product details function
+const displayDetails = (data) => {
+  const detailsDiv = document.getElementById("phone-details-div");
+  detailsDiv.textContent = "";
+  const div = document.createElement("div");
+  div.classList.add("row", "shadow", "mb-5", "rounded-3", "mx-auto");
+  div.innerHTML = `
+    <div class="p-5 col-12  col-md-6 ">
+        <h3 class="card-text">${data.name} </h3>
+        <h5 class="card-text"> Brand: ${data.brand} </h5>
+        <h6 class="text-danger">
+        ${data.releaseDate ? data.releaseDate : "No release found"}
+        </h6>
+        <img src="${data.image}" class="card-img-top " />
+    </div>
+    <div class="p-3 col-12 col-md-6 my-auto">
+         <ul class="list-group">
+            <h5 class="text-center">Main Specification</h5>
+            <li class="list-group-item"><p class="card-text"><b>Chipset:</b> ${
+              data.mainFeatures.chipSet
+            } </p></li>
+            <li class="list-group-item"><p class="card-text"><b>Display:</b> ${
+              data.mainFeatures.displaySize
+            } </p></li>
+            <li class="list-group-item"><p class="card-text"> <b>Storage:</b> ${
+              data.mainFeatures.memory
+            } </p></li>
+         </ul>
+         
+         <ul class="list-group">
+            <h5 class="text-center mt-2">Sensors</h5>
+            <li class="list-group-item"><p class="card-text">${
+              data.mainFeatures.sensors[0]
+            } </p></li>
+            <li class="list-group-item"><p class="card-text">${
+              data.mainFeatures.sensors[1]
+            } </p></li>
+            <li class="list-group-item"><p class="card-text">${
+              data.mainFeatures.sensors[2]
+            } </p></li>
+            <li class="list-group-item"><p class="card-text">${
+              data.mainFeatures.sensors[3]
+            } </p></li>
+            <li class="list-group-item"><p class="card-text">${
+              data.mainFeatures.sensors[4]
+            } </p></li>
+            <li class="list-group-item"><p class="card-text">${
+              data.mainFeatures.sensors[5]
+            } </p></li>
+         </ul>
+         <ul class="list-group">
+            <h5 class="text-center mt-2">Others Specification</h5>
+            <li class="list-group-item"><p class="card-text"><b>Blutooth:</b> ${
+              data.others?.Bluetooth
+            } </p></li>
+            <li class="list-group-item"><p class="card-text"><b>GPS:</b> ${
+              data.others?.GPS
+            } </p></li>
+            <li class="list-group-item"><p class="card-text"><b>Radio:</b> ${
+              data.others?.Radio
+            } </p></li>
+            <li class="list-group-item"><p class="card-text"><b>USB:</b> ${
+              data.others?.USB
+            } </p></li>
+            <li class="list-group-item"><p class="card-text"><b>WLAN:</b> ${
+              data.others?.WLAN
+            } </p></li>
+         </ul>
+    </div>
+    `;
+  detailsDiv.appendChild(div);
+};
