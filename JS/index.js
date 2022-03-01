@@ -46,13 +46,13 @@ const displayDetails = (data) => {
   const div = document.createElement("div");
   div.classList.add("row", "shadow", "mb-5", "rounded-3", "mx-auto");
   div.innerHTML = `
-    <div class="p-5 col-12  col-md-6 ">
+    <div class="p-5 col-12  col-md-6">
         <h3 class="card-text">${data.name} </h3>
         <h5 class="card-text"> Brand: ${data.brand} </h5>
         <h6 class="text-danger">
         ${data.releaseDate ? data.releaseDate : "No release found"}
         </h6>
-        <img src="${data.image}" class="card-img-top " />
+        <img src="${data.image}" class="card-img-top" />
     </div>
     <div class="p-3 col-12 col-md-6 my-auto">
          <ul class="list-group">
