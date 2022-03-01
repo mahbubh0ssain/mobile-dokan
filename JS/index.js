@@ -18,7 +18,7 @@ const displayData = (data) => {
 
     div.classList.add("col");
     div.innerHTML = `  
-        <div class="card h-100">
+        <div class="card h-100 rounded-3 shadow">
           <img  src= " ${data.image}"class="card-img-top p-3 "/>
           <div class="card-body">
             <h3 class="card-title">${data.brand}</h3>
