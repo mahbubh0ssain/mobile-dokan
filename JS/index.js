@@ -23,7 +23,7 @@ const displayData = (data) => {
           <div class="card-body">
             <h3 class="card-title">${data.brand}</h3>
             <h6 class="card-text">${data.phone_name}</h6>
-            <button type="button" class="btn btn-primary" onclick="showFullDetails()">Full Details</button>
+            <button type="button" class="btn btn-primary" onclick="getId('${data.slug}')">Full Details</button>
           </div>
         </div>
     `;
@@ -31,6 +31,12 @@ const displayData = (data) => {
   });
 };
 
-const showFullDetails = () => {
-  
-}
+// get product id dynamic url function
+const getId = (id) => {
+  const url = `https://openapi.programming-hero.com/api/phone/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayDetails(data.data));
+};
+
+
