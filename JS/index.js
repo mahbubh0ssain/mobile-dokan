@@ -20,16 +20,16 @@ const loadData = () => {
 };
 // display data from API
 const displayData = (data) => {
+  const mobile = data.slice(0, 20);
   const searchResultDiv = document.getElementById("main-div");
   //clear content
   searchResultDiv.textContent = "";
-  if (data.length == 0) {
+  if (mobile.length == 0) {
     document.getElementById("search-text-error").style.display = "block";
   } else {
     document.getElementById("search-text-error").style.display = "none";
-    data.forEach((data) => {
+    mobile.forEach((data) => {
       const div = document.createElement("div");
-
       div.classList.add("col");
       div.innerHTML = `  
         <div class="card h-100 rounded-3 shadow">
@@ -89,21 +89,33 @@ const displayDetails = (data) => {
             <h5 class="text-center mt-2">Sensors</h5>
             <li class="list-group-item"><p class="card-text">${
               data.mainFeatures.sensors[0]
+                ? data.mainFeatures.sensors[0]
+                : "No sensor found"
             } </p></li>
             <li class="list-group-item"><p class="card-text">${
               data.mainFeatures.sensors[1]
+                ? data.mainFeatures.sensors[1]
+                : "No sensor found"
             } </p></li>
             <li class="list-group-item"><p class="card-text">${
               data.mainFeatures.sensors[2]
+                ? data.mainFeatures.sensors[2]
+                : "No sensor found"
             } </p></li>
             <li class="list-group-item"><p class="card-text">${
               data.mainFeatures.sensors[3]
+                ? data.mainFeatures.sensors[3]
+                : "No sensor found"
             } </p></li>
             <li class="list-group-item"><p class="card-text">${
               data.mainFeatures.sensors[4]
+                ? data.mainFeatures.sensors[4]
+                : "No sensor found"
             } </p></li>
             <li class="list-group-item"><p class="card-text">${
               data.mainFeatures.sensors[5]
+                ? data.mainFeatures.sensors[5]
+                : "No sensor found"
             } </p></li>
          </ul>
          <ul class="list-group">
