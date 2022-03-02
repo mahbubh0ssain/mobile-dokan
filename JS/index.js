@@ -42,7 +42,6 @@ const displayData = (data) => {
         </div>
     `;
       searchResultDiv.appendChild(div);
-      
     });
   }
   // hide spinner
@@ -68,7 +67,7 @@ const displayDetails = (data) => {
         <h3 class="card-text">${data.name} </h3>
         <h5 class="card-text"> Brand: ${data.brand} </h5>
         <h6 class="text-danger">
-        ${data.releaseDate ? data.releaseDate : "No release found"}
+        ${data.releaseDate ? data.releaseDate : "No release date found"}
         </h6>
         <img src="${data.image}" class="card-img-top" />
     </div>
