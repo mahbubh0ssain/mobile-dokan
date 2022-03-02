@@ -11,6 +11,15 @@ span {
   margin-bottom: 20px;
 }
 
-.list-group {
-  border-radius: 3px;
+#spinner {
+  display: none;
+  margin-bottom: 20px;
+}
+#search-error {
+  display: none;
+  margin-bottom: 20px;
+}
+#search-text-error {
+  display: none;
+  margin-bottom: 20px;
 }

@@ -1,37 +1,55 @@
+// load data from API
 const loadData = () => {
+  // show spinner
+  document.getElementById("spinner").style.display = "block";
   const searchField = document.getElementById("search-field");
   const inputText = searchField.value;
-
-  const url = `https://openapi.programming-hero.com/api/phones?search=${inputText}`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => displayData(data.data));
-  document.getElementById("search-field").value = "";
+  if (inputText == "") {
+    document.getElementById("search-error").style.display = "block";
+    document.getElementById("spinner").style.display = "none";
+  } else {
+    document.getElementById("search-error").style.display = "none";
+    document.getElementById("spinner").style.display = "block";
+    const url = `https://openapi.programming-hero.com/api/phones?search=${inputText}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => displayData(data.data));
+    //clear search field
+    document.getElementById("search-field").value = "";
+  }
 };
-
+// display data from API
 const displayData = (data) => {
   const searchResultDiv = document.getElementById("main-div");
+  //clear content
   searchResultDiv.textContent = "";
+  if (data.length == 0) {
+    document.getElementById("search-text-error").style.display = "block";
+  } else {
+    document.getElementById("search-text-error").style.display = "none";
+    data.forEach((data) => {
+      const div = document.createElement("div");
 
-  data.forEach((data) => {
-    const div = document.createElement("div");
-
-    div.classList.add("col");
-    div.innerHTML = `  
+      div.classList.add("col");
+      div.innerHTML = `  
         <div class="card h-100 rounded-3 shadow">
           <img  src= " ${data.image}"class="card-img-top p-3 "/>
           <div class="card-body">
             <h3 class="card-title">${data.brand}</h3>
             <h6 class="card-text">${data.phone_name}</h6>
-            <button type="button" class="btn btn-primary" onclick="getId('${data.slug}')">Full Details</button>
+            <button type="button" class="btn btn-outline-primary" onclick="getId('${data.slug}')">Full Details</button>
           </div>
         </div>
     `;
-    searchResultDiv.appendChild(div);
-  });
+      searchResultDiv.appendChild(div);
+      
+    });
+  }
+  // hide spinner
+  document.getElementById("spinner").style.display = "none";
 };
 
-// get product id dynamic url function
+// get individual mobile id dynamic url function
 const getId = (id) => {
   const url = `https://openapi.programming-hero.com/api/phone/${id}`;
   fetch(url)
@@ -39,7 +57,7 @@ const getId = (id) => {
     .then((data) => displayDetails(data.data));
 };
 
-// display product details function
+// display mobile details function
 const displayDetails = (data) => {
   const detailsDiv = document.getElementById("phone-details-div");
   detailsDiv.textContent = "";

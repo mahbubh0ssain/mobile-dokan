@@ -50,12 +50,16 @@
           Search
         </button>
       </div>
-      <div
-        class="spinner-grow d-flex justify-content-center mx-auto"
-        style="width: 3rem; height: 3rem"
-        role="status"
-      >
-        <span class="visually-hidden">Loading...</span>
+      <h4 id="search-error" class="text-center text-danger">
+        Please input text here!
+      </h4>
+      <h4 id="search-text-error" class="text-center text-danger">
+        No search result found!
+      </h4>
+      <div class="d-flex justify-content-center align-content-center">
+        <div id="spinner" class="spinner-grow" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </div>
       <!-- main secrion area  -->
       <div id="phone-details-div" class="row row-cols-1"></div>
